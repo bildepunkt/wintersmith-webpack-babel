@@ -1,0 +1,32 @@
+{
+  "name": "wintersmith-webpack-babel",
+  "version": "0.1.0",
+  "description": "A Babelifying Webpack module bundler for Wintersmith. Because modules!",
+  "main": "./dist",
+  "scripts": {
+    "test": "./node_modules/.bin/coffee test/plugin.coffee",
+    "build": "./node_modules/.bin/coffee -c -o dist/ src/ && cp src/xpile.js dist/xpile.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "//github.com/bildepunkt/wintersmith-webpack-babel"
+  },
+  "keywords": [
+    "wintersmith",
+    "webpack",
+    "babel"
+  ],
+  "author": "Chris Peters",
+  "license": "MIT",
+  "dependencies": {
+    "babel-core": "^6.14.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.14.0",
+    "webpack": "^1.13.2"
+  },
+  "devDependencies": {
+    "coffee-script": ">1.9",
+    "vows": "0.8.x",
+    "wintersmith": "2.x"
+  }
+}
