@@ -1,6 +1,6 @@
 
 var webpack = require("webpack");
-var fs = require("fs");
+var fs = require("fs-extra");
 var path = require("path");
 
 /**
@@ -20,7 +20,7 @@ module.exports = function xpile (entry, outFileName, callback) {
         // wintersmith plugin assumes we're in contents, webpack does not
         entry: path.resolve("contents", entry.relative),
         output: {
-            path: './contents/scripts',
+            path: './build/scripts',
             filename: outFileName,
         },
         module: {
@@ -48,8 +48,15 @@ module.exports = function xpile (entry, outFileName, callback) {
         
         var result;
 
+        // TODO: still need the try/catch?
         try {
-            result = fs.readFileSync(path.resolve("contents", "scripts", outFileName), "utf8")
+            result = fs.readFileSync(path.resolve("build", "scripts", outFileName), "utf8");
+
+            // copy to contents for `wintersmith preview` purposes
+            fs.copySync(
+                path.resolve("build", "scripts", outFileName),
+                path.resolve("contents", "scripts", outFileName)
+            );
         } catch (err) {
             console.error(err);
         }
