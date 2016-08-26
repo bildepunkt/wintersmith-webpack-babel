@@ -14,7 +14,7 @@ Add the plugin path in your `config.json`:
     ...
     "plugins": [
         ...
-        "./node_modules/wintersmith-webpack"
+        "./node_modules/wintersmith-webpack-babel"
 
 Define webpack-babel options in your `config.json`:
 
