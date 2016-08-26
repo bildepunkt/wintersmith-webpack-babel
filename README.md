@@ -5,7 +5,7 @@ A Babelifying Webpack module bundler for Wintersmith. Because modules!
 
 ### Install
 
-npm i --save wintersmith-webpack-babel
+npm i --save babel-loader babel-preset-es2015 wintersmith-webpack-babel
 
 ### Use
 

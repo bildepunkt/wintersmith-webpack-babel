@@ -14,11 +14,13 @@ module.exports = function xpile (entry, outFileName, callback) {
     var xpiled;
 
     outFileName = outFileName || "bundle.js";
+    callback = callback || function () {}
 
     webpack({
-        entry: entry,
+        // wintersmith plugin assumes we're in contents, webpack does not
+        entry: path.resolve("contents", entry.relative),
         output: {
-            path: './contents/scripts',
+            path: './build/scripts',
             filename: outFileName,
         },
         module: {
@@ -35,16 +37,22 @@ module.exports = function xpile (entry, outFileName, callback) {
         if (err) {
             throw err;
         }
+
+        if (stats.compilation.errors.length) {
+            stats.compilation.errors.forEach(function (name, e) {
+                console.error("\n +-+-+ webpack compile error:", name, e, "\n");  
+            });
+
+            return;
+        }
         
         var result;
 
         try {
-            result = fs.readFileSync(path.resolve("contents", "scripts", outFileName), "utf8")
+            result = fs.readFileSync(path.resolve("build", "scripts", outFileName), "utf8")
         } catch (err) {
             console.error(err);
         }
-
-        console.log(result);
 
         callback(result);
     });
