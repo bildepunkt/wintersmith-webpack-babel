@@ -1,6 +1,6 @@
 {
   "name": "wintersmith-webpack-babel",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A Babelifying Webpack module bundler for Wintersmith. Because modules!",
   "main": "./dist",
   "scripts": {
@@ -9,10 +9,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "//github.com/bildepunkt/wintersmith-webpack-babel"
+    "url": "http://github.com/bildepunkt/wintersmith-webpack-babel"
   },
   "keywords": [
     "wintersmith",
+    "wintersmith-plugin",
     "webpack",
     "babel"
   ],
